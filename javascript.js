@@ -3,18 +3,33 @@ const CHOICES = ["rock", "paper", "scissors"];
 const WIN = [["rock", "paper", "scissors"],
 ["scissors", "rock", "paper"]];
 
+document.addEventListener('DOMContentLoaded', addEventListenersToButtons);
+
+function addEventListenersToButtons() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+      button.addEventListener('click', handleButtonClick);
+    });
+  }
+
+  function handleButtonClick(event) {
+    const buttonPressed = event.target.getAttribute('id');
+    playRound(buttonPressed);
+  }
+
 function getComputerChoice() {
     const randomIndex = Math.floor(Math.random() * CHOICES.length);
     return (CHOICES[randomIndex]);
 }
 
 function getPlayerChoice() {
-    return prompt("rock, paper or scissors?").toLowerCase();
-}
+    const button = document.querySelector('button');
+    let buttonPressed = button.getAttribute('id');
+    //alert(buttonPressed);
+  }
 
-function playRound() {
+function playRound(player) {
     let computer = getComputerChoice();
-    let player = getPlayerChoice();
 
     const index = WIN[0].indexOf(player);
 
@@ -37,7 +52,7 @@ function game() {
     let score = 0;
 
     for (let index = 0; index < 5; index++) {
-       score += playRound();
+       score += playRound(getPlayerChoice());
     }
 
     console.log("score final: " + score);
