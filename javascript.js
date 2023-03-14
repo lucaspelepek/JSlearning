@@ -3,7 +3,6 @@ const CHOICES = ["rock", "paper", "scissors"];
 const WIN = [["rock", "paper", "scissors"],
 ["scissors", "rock", "paper"]];
 
-a
 function getComputerChoice() {
     const randomIndex = Math.floor(Math.random() * CHOICES.length);
     return (CHOICES[randomIndex]);
